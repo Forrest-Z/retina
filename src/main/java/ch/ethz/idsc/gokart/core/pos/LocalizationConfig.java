@@ -69,7 +69,7 @@ public class LocalizationConfig {
   /***************************************************/
   /** @return predefined map with static geometry for lidar based localization */
   public static PredefinedMap getPredefinedMap() {
-    return PredefinedMap.DUBILAB_LOCALIZATION_20180904; // no tents
+    return PredefinedMap.DUBILAB_LOCALIZATION_20181128; // no tents
     // PredefinedMap.DUBILAB_LOCALIZATION_20180912; // with car and house tents for tse2 planning
   }
 
