@@ -135,7 +135,7 @@ public class TrackReconManagement {
       System.out.println(++count);
       // refine
       System.out.println("refine");
-      trackDataXYR = trackRefinement.getRefinedTrack(trackDataXYR, RealScalar.of(8), 10, closedTrack, constraints);
+      trackDataXYR = trackRefinement.getRefinedTrack(trackDataXYR, RealScalar.of(8), 30, closedTrack, constraints);
       // consider: slower track update
       if (Objects.nonNull(trackDataXYR))
         lastTrack = MPCBSplineTrack.withOffset(trackDataXYR, RADIUS_OFFSET, closedTrack);

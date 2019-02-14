@@ -8,7 +8,11 @@ import ch.ethz.idsc.gokart.gui.top.SensorsConfig;
 import ch.ethz.idsc.retina.util.math.Magnitude;
 import ch.ethz.idsc.retina.util.math.SI;
 import ch.ethz.idsc.retina.util.sys.AppResources;
+import ch.ethz.idsc.sophus.filter.Regularization2Step;
+import ch.ethz.idsc.sophus.group.RnGeodesic;
+import ch.ethz.idsc.tensor.RealScalar;
 import ch.ethz.idsc.tensor.Scalar;
+import ch.ethz.idsc.tensor.opt.TensorUnaryOperator;
 import ch.ethz.idsc.tensor.qty.Quantity;
 import ch.ethz.idsc.tensor.sca.Clip;
 
@@ -23,6 +27,38 @@ public class TrackReconConfig {
   /** 20181206: changed from +0.1[m] to -0.1[m] because artifacts were observed when driving fast
    * cause probably by the arrangement of the lidar on the sensor rack */
   public Scalar vlp16_ZHi = Quantity.of(-0.10, SI.METER);
+  /** how fast should the refinement be */
+  public Scalar trackRefinementLambda = Quantity.of(3, SI.ONE);
+  /** how strong is the regularizer */
+  public Scalar trackRefinementReg = Quantity.of(1, SI.ONE);
+  private static final Scalar gdRadiusGrowth = Quantity.of(0.007, SI.METER);
+  private static final Scalar gdRegularizer = RealScalar.of(0.0007);
+  private static final Scalar gdLimits = RealScalar.of(0.4);
+  private static final Scalar gdRadius = RealScalar.of(0.8);
+
+  public Scalar getGdRadius() {
+    return gdRadius.multiply(trackRefinementLambda);
+  }
+
+  public Scalar getGdLimits() {
+    return gdLimits.multiply(trackRefinementLambda);
+  }
+
+  public Scalar getGdRegularizer() {
+    return gdRegularizer.multiply(trackRefinementLambda).multiply(trackRefinementReg);
+  }
+
+  public Scalar getGdRadiusGrowth() {
+    return gdRadiusGrowth.multiply(trackRefinementLambda);
+  }
+
+  public TensorUnaryOperator getRegularizationCyclic() {
+    return Regularization2Step.cyclic(RnGeodesic.INSTANCE, getGdRegularizer());
+  }
+
+  public TensorUnaryOperator getRegularizationString() {
+    return Regularization2Step.string(RnGeodesic.INSTANCE, getGdRegularizer());
+  }
 
   /***************************************************/
   /** @return */

@@ -10,8 +10,6 @@ import java.util.stream.IntStream;
 import ch.ethz.idsc.owl.math.planar.Extract2D;
 import ch.ethz.idsc.retina.util.math.SI;
 import ch.ethz.idsc.retina.util.math.UniformBSpline2;
-import ch.ethz.idsc.sophus.filter.Regularization2Step;
-import ch.ethz.idsc.sophus.group.RnGeodesic;
 import ch.ethz.idsc.tensor.RealScalar;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.Scalars;
@@ -19,7 +17,6 @@ import ch.ethz.idsc.tensor.Tensor;
 import ch.ethz.idsc.tensor.Tensors;
 import ch.ethz.idsc.tensor.alg.Normalize;
 import ch.ethz.idsc.tensor.alg.Transpose;
-import ch.ethz.idsc.tensor.opt.TensorUnaryOperator;
 import ch.ethz.idsc.tensor.qty.Quantity;
 import ch.ethz.idsc.tensor.red.Max;
 import ch.ethz.idsc.tensor.red.Mean;
@@ -144,13 +141,6 @@ public class TrackRefinement {
     this.occupancyGrid = occupancyGrid;
   }
 
-  private static final Scalar gdRadiusGrowth = Quantity.of(0.007, SI.METER);
-  private static final Scalar gdRegularizer = RealScalar.of(0.0007);
-  private static final Scalar gdLimits = RealScalar.of(0.4);
-  private static final Scalar gdRadius = RealScalar.of(0.8);
-  private static final TensorUnaryOperator REGULARIZATION_CYCLIC = Regularization2Step.cyclic(RnGeodesic.INSTANCE, gdRegularizer);
-  private static final TensorUnaryOperator REGULARIZATION_STRING = Regularization2Step.string(RnGeodesic.INSTANCE, gdRegularizer);
-
   Tensor getRefinedTrack(Tensor points_xyr, Scalar resolution, int iterations, boolean closed, //
       List<TrackConstraint> constraints) {
     int m = (int) (points_xyr.length() * resolution.number().doubleValue());
@@ -177,10 +167,10 @@ public class TrackRefinement {
         return null;
       Tensor correct = optional.get();
       points_xyr = points_xyr.add(splineMatrixTransp.dot(correct));
-      points_xyr.set(gdRadiusGrowth::add, Tensor.ALL, 2);
+      points_xyr.set(TrackReconConfig.GLOBAL.getGdRadiusGrowth()::add, Tensor.ALL, 2);
       points_xyr = closed //
-          ? REGULARIZATION_CYCLIC.apply(points_xyr)
-          : REGULARIZATION_STRING.apply(points_xyr);
+          ? TrackReconConfig.GLOBAL.getRegularizationCyclic().apply(points_xyr)
+          : TrackReconConfig.GLOBAL.getRegularizationString().apply(points_xyr);
       // ---
       if (Objects.nonNull(constraints)) {
         // TODO JPH/MH
@@ -229,14 +219,14 @@ public class TrackRefinement {
     // upwardsforce
     Tensor lowClipping = Tensors.vector(i -> Max.of(sideLimits.Get(i, 0).add(positionsXYR.Get(i, 2)), Quantity.of(0, SI.METER)), queryPositions.length());
     Tensor highClipping = Tensors.vector(i -> Max.of(positionsXYR.Get(i, 2).subtract(sideLimits.Get(i, 1)), Quantity.of(0, SI.METER)), queryPositions.length());
-    Tensor sideCorr = lowClipping.subtract(highClipping).multiply(gdLimits.divide(resolution));
+    Tensor sideCorr = lowClipping.subtract(highClipping).multiply(TrackReconConfig.GLOBAL.getGdLimits().divide(resolution));
     // Tensor posCorr = Transpose.of(sideCorr.pmul(sideVectors));
     // System.out.println("posCorr=" + Dimensions.of(posCorr));
     // Tensor radiusCorr = highClipping.add(lowClipping).multiply(gdRadius.divide(resolution)).negate();
     // // Tensor upwardsforce = Tensors.vector(list)
     // return Optional.of(Transpose.of(Tensors.of(posCorr.get(0), posCorr.get(1), radiusCorr)));
     Tensor posCorr = sideCorr.pmul(sideVectors);
-    Tensor radiusCorr = highClipping.add(lowClipping).multiply(gdRadius.divide(resolution).negate());
+    Tensor radiusCorr = highClipping.add(lowClipping).multiply(TrackReconConfig.GLOBAL.getGdRadius().divide(resolution).negate());
     return Optional.of(Tensor.of(IntStream.range(0, posCorr.length()) //
         .mapToObj(i -> posCorr.get(i).append(radiusCorr.get(i)))));
   }
