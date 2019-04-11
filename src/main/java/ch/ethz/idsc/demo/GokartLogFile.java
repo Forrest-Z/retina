@@ -38,11 +38,11 @@ public enum GokartLogFile implements LogFile {
   // gokart.pose.lidar does not contain quality field
   /** moving gokart */
   _20171218T121006_9b56b71b,
-  /** pure pursuit oval up to 2[m/s] */
+  /** pursuit pursuit oval up to 2[m/s] */
   _20171218T130515_4794c081,
-  /** pure pursuit oval */
+  /** pursuit pursuit oval */
   _20171218T133833_2eb2bfb0,
-  /** pure pursuit oval up to 2[m/s] */
+  /** pursuit pursuit oval up to 2[m/s] */
   _20171218T135141_2eb2bfb0,
   /***************************************************/
   /* 2018-01-08 */
@@ -87,17 +87,17 @@ public enum GokartLogFile implements LogFile {
   _20180305T150255_9e1dc13c,
   /** joystick */
   _20180305T151234_9e1dc13c,
-  /** pure pursuit without davis */
+  /** pursuit pursuit without davis */
   _20180305T170018_9e1dc13c,
   /***************************************************/
   /* 2018-03-07 */
   /** joystick slow, with safety barriers for demo */
   _20180307T095540_1cd7a2e2,
-  /** pure pursuit with localization failure */
+  /** pursuit pursuit with localization failure */
   _20180307T150715_28f09b86,
-  /** pure pursuit of oval shape */
+  /** pursuit pursuit of oval shape */
   _20180307T151633_28f09b86,
-  /** pure pursuit of figure 8 */
+  /** pursuit pursuit of figure 8 */
   _20180307T154859_0cd18c6b,
   /** autonomous driving shape 8
    * velocity peak ~3.6[m*s^-1] */
@@ -108,45 +108,45 @@ public enum GokartLogFile implements LogFile {
   /* 2018-03-08 */
   /** no driving */
   _20180308T145954_45b9eed8,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180308T151702_45b9eed8,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180308T165333_1ab0c811,
   /***************************************************/
   /* 2018-03-10 DEMO DAY */
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T102810_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T110029_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T112508_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T120222_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T130740_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T132414_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T135043_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T142811_1ab0c811,
   /** not moving */
   _20180310T151418_1ab0c811,
   /** not moving */
   _20180310T152653_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T153409_1ab0c811,
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180310T160324_1ab0c811,
   /***************************************************/
   /* 2018-03-19 */
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180319T133213_1ab0c811,
   /***************************************************/
   /* 2018-03-22 */
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180322T120834_d520ea0d,
-  /** fast pure pursuit figure 8 with escapes */
+  /** fast pursuit pursuit figure 8 with escapes */
   _20180322T124329_d520ea0d,
   /***************************************************/
   /* 2018-04-09 */
@@ -171,23 +171,23 @@ public enum GokartLogFile implements LogFile {
   /* 2018-04-18 */
   /** joystick driving and single prbs */
   _20180418T102854_5a650fbf,
-  /** pure pursuit */
+  /** pursuit pursuit */
   _20180418T125913_bca165ae,
   /** multiple prbs */
   _20180418T132333_bca165ae,
   /***************************************************/
   /* 2018-04-19 */
-  /** pure pursuit with hangar doors closed and then open */
+  /** pursuit pursuit with hangar doors closed and then open */
   _20180419T124700_7373f83e,
-  /** pure pursuit with speed controller going in reverse */
+  /** pursuit pursuit with speed controller going in reverse */
   _20180419T150253_7373f83e,
-  /** pure pursuit with speed controller going in reverse */
+  /** pursuit pursuit with speed controller going in reverse */
   _20180419T172115_f80284e9,
   /** joystick driving along figure 8 */
   _20180419T172918_f80284e9,
   /***************************************************/
   /* 2018-04-23 */
-  /** pure pursuit with controller driving backwards */
+  /** pursuit pursuit with controller driving backwards */
   _20180423T181849_633cc6e6,
   /***************************************************/
   /* 2018-04-27 */
@@ -206,13 +206,13 @@ public enum GokartLogFile implements LogFile {
   /** slow and medium joystick driving with 2 pedestrians walking
    * gokart localization not successful */
   _20180427T140645_22662115,
-  /** trajectory planning and pure pursuit */
+  /** trajectory planning and pursuit pursuit */
   _20180427T155210_987cb124,
-  /** trajectory planning and pure pursuit */
+  /** trajectory planning and pursuit pursuit */
   _20180427T155709_987cb124,
   /***************************************************/
   /* 2018-04-30 */
-  /** pure pursuit at different speeds with pedestrians walking
+  /** pursuit pursuit at different speeds with pedestrians walking
    * PI-controller with Kp==20 and Ki==0 */
   _20180430T104113_a5291af9,
   /** slow driving for recording improved map with hangar doors open+closed
@@ -230,9 +230,9 @@ public enum GokartLogFile implements LogFile {
   _20180430T164704_0e959fc6,
   /***************************************************/
   /* 2018-05-03 */
-  /** slow pure pursuit oval with Kp==30, Ki==0 */
+  /** slow pursuit pursuit oval with Kp==30, Ki==0 */
   _20180503T094457_ce8724ba,
-  /** pure pursuit oval
+  /** pursuit pursuit oval
    * initial localization failure
    * last round success */
   _20180503T103916_836189cd,
@@ -241,23 +241,23 @@ public enum GokartLogFile implements LogFile {
   /** motion planning with driving speeds up to 3[m/s] */
   _20180503T150559_16144bb6,
   /** motion planning
-   * pure pursuit figure 8 */
+   * pursuit pursuit figure 8 */
   _20180503T151615_16144bb6,
-  /** pure pursuit figure 8 with Kp==40, Ki==0
+  /** pursuit pursuit figure 8 with Kp==40, Ki==0
    * first at slow speed then up to 4[m/s]
    * pedestrians, bicycle, static obstacles
    * speed controller allows very minor backwards motion */
   _20180503T160522_16144bb6,
   /***************************************************/
   /* 2018-05-07 */
-  /** pure pursuit figure 8 */
+  /** pursuit pursuit figure 8 */
   _20180507T090040_28e21174,
-  /** pure pursuit figure 8 with speed then up to 5[m/s] */
+  /** pursuit pursuit figure 8 with speed then up to 5[m/s] */
   _20180507T132022_588d4c6c,
-  /** pure pursuit figure 8 with speed then up to 5[m/s]
+  /** pursuit pursuit figure 8 with speed then up to 5[m/s]
    * exhibits backwards driving */
   _20180507T135949_588d4c6c,
-  /** pure pursuit figure 8 with davis camera calibrated */
+  /** pursuit pursuit figure 8 with davis camera calibrated */
   _20180507T143002_588d4c6c,
   /** trajectory planning
    * several ovals until planner stop */
@@ -282,9 +282,9 @@ public enum GokartLogFile implements LogFile {
   _20180514T105947_eda6fc3d,
   /** record waypoints for duct-tape track */
   _20180514T151138_767e5417,
-  /** pure pursuit of duct-tape track */
+  /** pursuit pursuit of duct-tape track */
   _20180514T153139_767e5417,
-  /** pure pursuit of duct-tape track
+  /** pursuit pursuit of duct-tape track
    * second half includes pedestrians */
   _20180514T155248_767e5417,
   /***************************************************/
@@ -298,13 +298,13 @@ public enum GokartLogFile implements LogFile {
   _20180517T161015_294bf075,
   /** path planning with static obstacles */
   _20180517T161714_294bf075,
-  /** path planning with static obstacles, several pure pursuit
+  /** path planning with static obstacles, several pursuit pursuit
    * failures due to large curvature */
   _20180517T162431_294bf075,
   /** path planning with static obstacles, several failures
    * because gokart reaches end of trajectory before replanning */
   _20180517T163528_294bf075,
-  /** path planning with static obstacles, several pure pursuit
+  /** path planning with static obstacles, several pursuit pursuit
    * failures due to large curvature, gokart cuts through center */
   _20180517T172517_a7130894,
   /** path planning with static obstacles
@@ -312,9 +312,9 @@ public enum GokartLogFile implements LogFile {
   _20180517T174022_a7130894,
   /***************************************************/
   /* 2018-05-22 */
-  /** pure pursuit figure 8 with speeds up to 6[m/s] */
+  /** pursuit pursuit figure 8 with speeds up to 6[m/s] */
   _20180522T111414_6806b8fd,
-  /** oval pure pursuit slow */
+  /** oval pursuit pursuit slow */
   _20180522T114650_6806b8fd,
   /** trajectory planning with moving obstacles */
   _20180522T135700_2da7e1f5,
@@ -329,11 +329,11 @@ public enum GokartLogFile implements LogFile {
   /***************************************************/
   /* 2018-05-24 */
   /** different rimo P/PI controller values
-   * pure pursuit figure 8 */
+   * pursuit pursuit figure 8 */
   _20180524T142610_0c5750cc,
-  /** trajectory planning, pure pursuit figure 8 */
+  /** trajectory planning, pursuit pursuit figure 8 */
   _20180524T163738_65ff8506,
-  /** pure pursuit figure 8
+  /** pursuit pursuit figure 8
    * involves localization failure */
   _20180524T164438_65ff8506,
   /** trajectory planning oval waypoints, no obstacles */
@@ -389,9 +389,9 @@ public enum GokartLogFile implements LogFile {
   _20180604T105353_a2e94332,
   /** pedestrians walking with stationary gokart */
   _20180604T120216_a2e94332,
-  /** pure pursuit figure eight reverse */
+  /** pursuit pursuit figure eight reverse */
   _20180604T122138_d2234286,
-  /** pure pursuit figure eight reverse
+  /** pursuit pursuit figure eight reverse
    * localization issues at certain configuration */
   _20180604T132432_d2234286,
   /** testing brake and linmot with stationary gokart */
@@ -399,10 +399,10 @@ public enum GokartLogFile implements LogFile {
   /** testing brake and linmot with stationary gokart
    * {@link LinmotFireFighter} switches off linmot */
   _20180604T142924_77ab1670,
-  /** pure pursuit figure eight slow driving
+  /** pursuit pursuit figure eight slow driving
    * with pedestriants around */
   _20180604T150508_15e65bba,
-  /** pure pursuit figure eight */
+  /** pursuit pursuit figure eight */
   _20180604T153602_15e65bba,
   /***************************************************/
   /* 2018-06-07 */
@@ -424,7 +424,7 @@ public enum GokartLogFile implements LogFile {
   _20180607T165423_e9d47681,
   /** gokart investigation */
   _20180607T165530_e9d47681,
-  /** pure pursuit figure eight reverse
+  /** pursuit pursuit figure eight reverse
    * including emergency brake testing
    * steering failure at 556.908939[s] */
   _20180607T170837_e9d47681,
@@ -433,7 +433,7 @@ public enum GokartLogFile implements LogFile {
   /** autonomous figure eight */
   _20180611T095800_851c404d,
   /** trajectory planning, but incomplete because of virtual obstacle
-   * pure pursuit figure eight including emergency stops,
+   * pursuit pursuit figure eight including emergency stops,
    * localization failure after emergency stop,
    * steering failure at 553.125962[s] */
   _20180611T101502_851c404d,
@@ -460,25 +460,25 @@ public enum GokartLogFile implements LogFile {
   /* investigation of steering system anomaly */
   /***************************************************/
   /* 2018-06-21 */
-  /** pure pursuit figure eight with localization failure
+  /** pursuit pursuit figure eight with localization failure
    * after emergency stop */
   _20180621T085525_2876053b,
-  /** pure pursuit figure eight with driving in reverse */
+  /** pursuit pursuit figure eight with driving in reverse */
   _20180621T093117_2876053b,
   /** trajectory planning with changing obstacles */
   _20180621T095326_707a71e0,
-  /** pure pursuit figure eight with localization failure */
+  /** pursuit pursuit figure eight with localization failure */
   _20180621T120115_707a71e0,
-  /** pure pursuit figure eight with driving in reverse */
+  /** pursuit pursuit figure eight with driving in reverse */
   _20180621T125013_2b01cac5,
   /***************************************************/
   /* 2018-06-25 */
   /* visitors from local school */
-  /** pure pursuit figure 8 with reverse driving */
+  /** pursuit pursuit figure 8 with reverse driving */
   _20180625T084608_ab61da0c,
-  /** pure pursuit figure 8 with reverse driving */
+  /** pursuit pursuit figure 8 with reverse driving */
   _20180625T100400_52c7710a,
-  /** demo for school: pure pursuit figure 8
+  /** demo for school: pursuit pursuit figure 8
    * with reverse driving and several emergency stops */
   _20180625T101902_52c7710a,
   /** driving with joystick, u-turn challenge */
@@ -496,23 +496,23 @@ public enum GokartLogFile implements LogFile {
   _20180628T160026_275d4082,
   /** parallel parking challenge */
   _20180628T172648_275d4082,
-  /** pure pursuit figure 8 including reverse driving */
+  /** pursuit pursuit figure 8 including reverse driving */
   _20180628T173900_275d4082,
   /***************************************************/
   /* 2018-07-02 */
-  /** pure pursuit forward and reverse */
+  /** pursuit pursuit forward and reverse */
   _20180702T102850_4e2a5674,
   /** parallel parking */
   _20180702T112912_4e2a5674,
   /** race track, fence */
   _20180702T133612_4e2a5674,
-  /** workshop, pure pursuit, trajectory planning */
+  /** workshop, pursuit pursuit, trajectory planning */
   _20180702T144949_4e2a5674,
   /** trajectory planning with spherical goal region */
   _20180702T153457_4e2a5674,
   /** race track */
   _20180702T154417_4e2a5674,
-  /** pure pursuit figure eight with emergency stops
+  /** pursuit pursuit figure eight with emergency stops
    * and localization failure */
   _20180702T170032_4e2a5674,
   /** pedestrians in front of stationary gokart */
@@ -580,14 +580,14 @@ public enum GokartLogFile implements LogFile {
   // davis240c on
   /** collecting lidar data for localization map update */
   _20180813T115544_26cfbbca,
-  /** slow pure pursuit figure 8 reverse */
+  /** slow pursuit pursuit figure 8 reverse */
   _20180813T131746_2c569ed8,
-  /** slow pure pursuit figure 8 reverse */
+  /** slow pursuit pursuit figure 8 reverse */
   _20180813T134234_2c569ed8,
-  /** pure pursuit figure 8 reverse with varying speeds
+  /** pursuit pursuit figure 8 reverse with varying speeds
    * with davis240c but upside down */
   _20180813T151442_2c569ed8,
-  /** pure pursuit figure 8 reverse with varying speeds
+  /** pursuit pursuit figure 8 reverse with varying speeds
    * davis240c with correct orientation */
   _20180813T165630_2c569ed8,
   /***************************************************/
@@ -634,10 +634,10 @@ public enum GokartLogFile implements LogFile {
   _20180823T134242_2693c28e,
   /** slow manual driving */
   _20180823T135656_2693c28e,
-  /** pure pursuit figure eight reverse
+  /** pursuit pursuit figure eight reverse
    * forward/reverse with emergency stops */
   _20180823T152218_2693c28e,
-  /** pure pursuit figure eight reverse
+  /** pursuit pursuit figure eight reverse
    * forward/reverse with emergency stops */
   _20180823T162001_2693c28e,
   /** manual driving track red, [mh, az, jh] */
@@ -679,7 +679,7 @@ public enum GokartLogFile implements LogFile {
   _20180830T160739_30e51fa2,
   /***************************************************/
   /* 2018-09-04 demoday */
-  /** pure pursuit figure 8 reverse */
+  /** pursuit pursuit figure 8 reverse */
   _20180904T113548_c4fc6532,
   /** planning around changing obstacles
    * using bayesian mapping in separate thread */
@@ -1326,11 +1326,11 @@ public enum GokartLogFile implements LogFile {
   _20190125T150258_c2df0d09,
   /***************************************************/
   /* 2019-01-28 */
-  /** track recon and pure pursuit of center line */
+  /** track recon and pursuit pursuit of center line */
   _20190128T133144_6f6e3dee,
   /** manual driving data collection vmu931 */
   _20190128T134321_6f6e3dee,
-  /** manual driving, pure pursuit */
+  /** manual driving, pursuit pursuit */
   _20190128T141006_6f6e3dee,
   /** slow driving */
   _20190128T145748_0811fd85,
@@ -1350,7 +1350,7 @@ public enum GokartLogFile implements LogFile {
   _20190128T162344_380dac0f,
   /** slow driving */
   _20190128T165650_f558b2d4,
-  /** pure pursuit forward and reverse up to 6[m/s] */
+  /** pursuit pursuit forward and reverse up to 6[m/s] */
   _20190128T171650_f558b2d4,
   /***************************************************/
   /* 2019-01-31 */
@@ -1364,7 +1364,7 @@ public enum GokartLogFile implements LogFile {
   _20190131T151301_76c01162,
   /** mpc */
   _20190131T152406_76c01162,
-  /** pure pursuit, manual driving */
+  /** pursuit pursuit, manual driving */
   _20190131T160439_9b9dc0ca,
   /** manual driving */
   _20190131T161655_9b9dc0ca,
@@ -1372,7 +1372,7 @@ public enum GokartLogFile implements LogFile {
   /* 2019-02-04 */
   /** pushing gokart manually to test track recon module */
   _20190204T092436_a07a8452,
-  /** pure pursuit demo for visitor group */
+  /** pursuit pursuit demo for visitor group */
   _20190204T104424_a07a8452,
   /** manual driving, mpc */
   _20190204T125814_ee446e1c,
@@ -1388,7 +1388,7 @@ public enum GokartLogFile implements LogFile {
   _20190204T144259_e9fccdaa,
   /** mpc */
   _20190204T145011_e9fccdaa,
-  /** pure pursuit */
+  /** pursuit pursuit */
   _20190204T145317_e9fccdaa,
   /** mpc */
   _20190204T145612_e9fccdaa,
@@ -1404,9 +1404,9 @@ public enum GokartLogFile implements LogFile {
   _20190204T160247_e9fccdaa,
   /** mpc */
   _20190204T161100_e9fccdaa,
-  /** pure pursuit */
+  /** pursuit pursuit */
   _20190204T172205_e9fccdaa,
-  /** mpc, pure pursuit, manual driving */
+  /** mpc, pursuit pursuit, manual driving */
   _20190204T185052_fdc1b4b9,
   /***************************************************/
   /* 2019-02-08 */
@@ -1420,7 +1420,7 @@ public enum GokartLogFile implements LogFile {
   _20190211T113051_e3c6742e,
   /** testing adv conversion, no driving */
   _20190211T120203_e3c6742e,
-  /** testing non-threaded abstract module, pure pursuit, manual driving */
+  /** testing non-threaded abstract module, pursuit pursuit, manual driving */
   _20190211T130907_ad3cc9bb,
   /** manual driving, mpc */
   _20190211T133154_eb380e2c,
@@ -1498,7 +1498,7 @@ public enum GokartLogFile implements LogFile {
   /* 2019-03-07 */
   /** slow manual driving */
   _20190307T105648_e8ec1e35,
-  /** track recon and pure pursuit */
+  /** track recon and pursuit pursuit */
   _20190307T110429_e8ec1e35,
   /** power steering test, slow and fast manual driving */
   _20190307T161708_086ad351,
@@ -1620,9 +1620,9 @@ public enum GokartLogFile implements LogFile {
   _20190321T144129_140b9727,
   /** power steering test */
   _20190321T152149_140b9727,
-  /** pure pursuit */
+  /** pursuit pursuit */
   _20190321T170225_140b9727,
-  /** pure pursuit */
+  /** pursuit pursuit */
   _20190321T174352_b8d4b66a,
   /***************************************************/
   /* 2019-03-25

@@ -10,7 +10,7 @@ import java.util.Objects;
 import ch.ethz.idsc.gokart.core.mpc.ControlAndPredictionSteps;
 import ch.ethz.idsc.gokart.core.mpc.ControlAndPredictionStepsMessage;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseEvent;
-import ch.ethz.idsc.gokart.core.pure.TrajectoryEvents;
+import ch.ethz.idsc.gokart.core.pursuit.TrajectoryEvents;
 import ch.ethz.idsc.gokart.dev.linmot.LinmotGetEvent;
 import ch.ethz.idsc.gokart.dev.rimo.RimoGetEvent;
 import ch.ethz.idsc.gokart.dev.rimo.RimoPutEvent;

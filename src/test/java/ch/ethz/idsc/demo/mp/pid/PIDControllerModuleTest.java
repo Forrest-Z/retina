@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import ch.ethz.idsc.gokart.core.pos.GokartPoseEvent;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseEvents;
-import ch.ethz.idsc.gokart.core.pure.DubendorfCurve;
+import ch.ethz.idsc.gokart.core.pursuit.DubendorfCurve;
 import ch.ethz.idsc.owl.math.planar.Extract2D;
 import ch.ethz.idsc.retina.util.math.SI;
 import ch.ethz.idsc.sophus.group.Se2CoveringIntegrator;

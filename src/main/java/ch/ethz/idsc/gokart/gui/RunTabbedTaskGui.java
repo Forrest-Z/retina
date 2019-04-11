@@ -37,15 +37,15 @@ import ch.ethz.idsc.gokart.core.map.TrackReconModule;
 import ch.ethz.idsc.gokart.core.mpc.MPCDynamicDrivingModule;
 import ch.ethz.idsc.gokart.core.mpc.MPCKinematicDrivingModule;
 import ch.ethz.idsc.gokart.core.pos.PoseLcmServerModule;
-import ch.ethz.idsc.gokart.core.pure.CenterLinePursuitModule;
-import ch.ethz.idsc.gokart.core.pure.FigureDucttapeModule;
-import ch.ethz.idsc.gokart.core.pure.FigureEightModule;
-import ch.ethz.idsc.gokart.core.pure.FigureEightReverseModule;
-import ch.ethz.idsc.gokart.core.pure.FigureOvalModule;
-import ch.ethz.idsc.gokart.core.pure.FigureTiresAModule;
-import ch.ethz.idsc.gokart.core.pure.FigureTiresBModule;
-import ch.ethz.idsc.gokart.core.pure.GokartTrajectoryModule;
-import ch.ethz.idsc.gokart.core.pure.GokartTrajectorySRModule;
+import ch.ethz.idsc.gokart.core.pursuit.CenterLinePurePursuitModule;
+import ch.ethz.idsc.gokart.core.pursuit.FigureDucttapeModule;
+import ch.ethz.idsc.gokart.core.pursuit.FigureEightModule;
+import ch.ethz.idsc.gokart.core.pursuit.FigureEightReverseModule;
+import ch.ethz.idsc.gokart.core.pursuit.FigureOvalModule;
+import ch.ethz.idsc.gokart.core.pursuit.FigureTiresAModule;
+import ch.ethz.idsc.gokart.core.pursuit.FigureTiresBModule;
+import ch.ethz.idsc.gokart.core.pursuit.GokartTrajectoryModule;
+import ch.ethz.idsc.gokart.core.pursuit.pure.GokartTrajectorySRModule;
 import ch.ethz.idsc.gokart.core.slam.LidarLocalizationModule;
 import ch.ethz.idsc.gokart.core.sound.GokartSoundLcmModule;
 import ch.ethz.idsc.gokart.core.sound.VoiceOutputModule;
@@ -123,7 +123,7 @@ enum RunTabbedTaskGui {
       MPCKinematicDrivingModule.class, //
       MPCDynamicDrivingModule.class, //
       GokartTrajectoryModule.class, //
-      CenterLinePursuitModule.class, //
+      CenterLinePurePursuitModule.class, //
       PIDModule.class, //
       PIDTestTrackModule.class, //
       FigureTiresAModule.class, //

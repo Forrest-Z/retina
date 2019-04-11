@@ -15,7 +15,7 @@ import ch.ethz.idsc.gokart.core.mpc.MPCControlUpdateLcmClient;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseInterface;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseLcmClient;
 import ch.ethz.idsc.gokart.core.pos.LocalizationConfig;
-import ch.ethz.idsc.gokart.core.pure.TrajectoryLcmClient;
+import ch.ethz.idsc.gokart.core.pursuit.TrajectoryLcmClient;
 import ch.ethz.idsc.gokart.core.slam.LidarLocalizationModule;
 import ch.ethz.idsc.gokart.core.slam.PredefinedMap;
 import ch.ethz.idsc.gokart.gui.GokartLcmChannel;

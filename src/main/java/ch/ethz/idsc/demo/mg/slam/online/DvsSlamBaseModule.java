@@ -6,12 +6,12 @@ import java.util.concurrent.TimeUnit;
 
 import ch.ethz.idsc.demo.mg.slam.SlamAlgoConfig;
 import ch.ethz.idsc.demo.mg.slam.config.EventCamera;
-import ch.ethz.idsc.gokart.core.pure.SlamCurvePurePursuitModule;
+import ch.ethz.idsc.gokart.core.pursuit.pure.SlamCurvePurePursuitModule;
 import ch.ethz.idsc.retina.util.sys.AbstractClockedModule;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.Tensor;
 
-/** runs the SLAM algorithm and a pure pursuit module which gets a lookAhead point in the go kart frame
+/** runs the SLAM algorithm and a pursuit pursuit module which gets a lookAhead point in the go kart frame
  * from the SLAM algorithm */
 public class DvsSlamBaseModule extends AbstractClockedModule {
   private final EventCamera eventCamera;

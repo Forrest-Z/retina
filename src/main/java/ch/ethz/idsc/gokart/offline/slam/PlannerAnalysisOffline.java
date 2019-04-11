@@ -13,7 +13,7 @@ import ch.ethz.idsc.gokart.core.pos.GokartPoseContainer;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseEvent;
 import ch.ethz.idsc.gokart.core.pos.LocalizationConfig;
 import ch.ethz.idsc.gokart.core.pos.MappedPoseInterface;
-import ch.ethz.idsc.gokart.core.pure.TrajectoryEvents;
+import ch.ethz.idsc.gokart.core.pursuit.TrajectoryEvents;
 import ch.ethz.idsc.gokart.core.slam.PredefinedMap;
 import ch.ethz.idsc.gokart.gui.GokartLcmChannel;
 import ch.ethz.idsc.gokart.gui.top.GokartRender;

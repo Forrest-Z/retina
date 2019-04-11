@@ -7,7 +7,7 @@ import ch.ethz.idsc.retina.util.math.Magnitude;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.Tensor;
 
-/** the "duo" controller was first used in the pure pursuit module
+/** the "duo" controller was first used in the pursuit pursuit module
  * for trajectory following. however, the analysis of the torque
  * showed that the load was not balanced between the motors in a
  * desirable way.
