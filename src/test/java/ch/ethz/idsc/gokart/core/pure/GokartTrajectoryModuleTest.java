@@ -58,38 +58,38 @@ public class GokartTrajectoryModuleTest extends TestCase {
       assertEquals(dims.get(1), Integer.valueOf(2));
       assertTrue(15 < dims.get(0));
     }
-    assertFalse(gokartTrajectoryModule.purePursuitModule.purePursuitRimo.private_isOperational());
-    assertFalse(gokartTrajectoryModule.purePursuitModule.purePursuitSteer.private_isOperational());
+    assertFalse(gokartTrajectoryModule.purePursuitModule.pursuitRimo.private_isOperational());
+    assertFalse(gokartTrajectoryModule.purePursuitModule.pursuitSteer.private_isOperational());
     AllGunsBlazing.publishAutonomous();
     gokartTrajectoryModule.purePursuitModule.runAlgo();
-    assertTrue(gokartTrajectoryModule.purePursuitModule.purePursuitRimo.private_isOperational());
-    assertTrue(gokartTrajectoryModule.purePursuitModule.purePursuitSteer.private_isOperational());
+    assertTrue(gokartTrajectoryModule.purePursuitModule.pursuitRimo.private_isOperational());
+    assertTrue(gokartTrajectoryModule.purePursuitModule.pursuitSteer.private_isOperational());
     {
-      Optional<RimoPutEvent> optional = gokartTrajectoryModule.purePursuitModule.purePursuitRimo.private_putEvent( //
+      Optional<RimoPutEvent> optional = gokartTrajectoryModule.purePursuitModule.pursuitRimo.private_putEvent( //
           new SteerColumnAdapter(false, Quantity.of(0.3, "SCE")));
       assertFalse(optional.isPresent());
     }
     {
       SteerColumnInterface steerColumnInterface = new SteerColumnAdapter(true, Quantity.of(0.3, "SCE"));
       assertTrue(steerColumnInterface.isSteerColumnCalibrated());
-      assertTrue(gokartTrajectoryModule.purePursuitModule.purePursuitRimo.private_isOperational());
+      assertTrue(gokartTrajectoryModule.purePursuitModule.pursuitRimo.private_isOperational());
       RimoGetEvent rge = RimoGetEvents.create(123, 234);
-      gokartTrajectoryModule.purePursuitModule.purePursuitRimo.rimoRateControllerWrap.getEvent(rge);
+      gokartTrajectoryModule.purePursuitModule.pursuitRimo.rimoRateControllerWrap.getEvent(rge);
       Optional<RimoPutEvent> optional = //
-          gokartTrajectoryModule.purePursuitModule.purePursuitRimo.private_putEvent(steerColumnInterface);
+          gokartTrajectoryModule.purePursuitModule.pursuitRimo.private_putEvent(steerColumnInterface);
       assertTrue(optional.isPresent());
     }
     {
-      Optional<SteerPutEvent> optional = gokartTrajectoryModule.purePursuitModule.purePursuitSteer.private_putEvent( //
+      Optional<SteerPutEvent> optional = gokartTrajectoryModule.purePursuitModule.pursuitSteer.private_putEvent( //
           new SteerColumnAdapter(false, Quantity.of(0.3, "SCE")));
       CurvePurePursuitModuleTest._checkFallback(optional);
     }
     {
       SteerColumnInterface steerColumnInterface = new SteerColumnAdapter(true, Quantity.of(0.3, "SCE"));
       assertTrue(steerColumnInterface.isSteerColumnCalibrated());
-      assertTrue(gokartTrajectoryModule.purePursuitModule.purePursuitSteer.private_isOperational());
+      assertTrue(gokartTrajectoryModule.purePursuitModule.pursuitSteer.private_isOperational());
       Optional<SteerPutEvent> optional = //
-          gokartTrajectoryModule.purePursuitModule.purePursuitSteer.private_putEvent(steerColumnInterface);
+          gokartTrajectoryModule.purePursuitModule.pursuitSteer.private_putEvent(steerColumnInterface);
       assertTrue(optional.isPresent());
     }
     {

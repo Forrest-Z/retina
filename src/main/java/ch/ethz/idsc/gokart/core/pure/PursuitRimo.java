@@ -14,7 +14,7 @@ import ch.ethz.idsc.gokart.dev.steer.SteerConfig;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.qty.Quantity;
 
-class PurePursuitRimo extends PurePursuitBase<RimoPutEvent> {
+class PursuitRimo extends PursuitBase<RimoPutEvent> {
   private final SteerMapping steerMapping = SteerConfig.GLOBAL.getSteerMapping();
   /** available implementations of RimoRateControllerWrap are
    * {@link RimoRateControllerUno}, and {@link RimoRateControllerDuo}
@@ -46,14 +46,14 @@ class PurePursuitRimo extends PurePursuitBase<RimoPutEvent> {
   }
 
   /***************************************************/
-  @Override // from PurePursuitBase
+  @Override // from PursuitBase
   Optional<RimoPutEvent> control(SteerColumnInterface steerColumnInterface) {
     return rimoRateControllerWrap.iterate( //
         speed, // average target velocity
         steerMapping.getAngleFromSCE(steerColumnInterface)); // steering angle
   }
 
-  @Override // from PurePursuitBase
+  @Override // from PursuitBase
   Optional<RimoPutEvent> fallback() {
     return Optional.empty();
   }

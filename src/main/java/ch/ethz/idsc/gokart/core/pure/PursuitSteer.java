@@ -13,7 +13,7 @@ import ch.ethz.idsc.retina.util.math.SIDerived;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.qty.Quantity;
 
-final class PurePursuitSteer extends PurePursuitBase<SteerPutEvent> {
+final class PursuitSteer extends PursuitBase<SteerPutEvent> {
   private static final Optional<SteerPutEvent> FALLBACK = Optional.of(SteerPutEvent.PASSIVE_MOT_TRQ_1);
   // ---
   private final SteerMapping steerMapping = SteerConfig.GLOBAL.getSteerMapping();
@@ -41,7 +41,7 @@ final class PurePursuitSteer extends PurePursuitBase<SteerPutEvent> {
   }
 
   /***************************************************/
-  @Override // from PurePursuitBase
+  @Override // from PursuitBase
   Optional<SteerPutEvent> control(SteerColumnInterface steerColumnInterface) {
     Scalar currAngle = steerColumnInterface.getSteerColumnEncoderCentered();
     Scalar desPos = steerMapping.getSCEfromAngle(angle);
@@ -50,7 +50,7 @@ final class PurePursuitSteer extends PurePursuitBase<SteerPutEvent> {
     return Optional.of(SteerPutEvent.createOn(torqueCmd));
   }
 
-  @Override // from PurePursuitBase
+  @Override // from PursuitBase
   Optional<SteerPutEvent> fallback() {
     return FALLBACK;
   }

@@ -9,8 +9,8 @@ import ch.ethz.idsc.gokart.dev.steer.SteerSocket;
 import ch.ethz.idsc.owl.ani.api.ProviderRank;
 import ch.ethz.idsc.retina.util.StartAndStoppable;
 
-/** base class for pure pursuit trajectory following motor and steering control */
-abstract class PurePursuitBase<PE> implements StartAndStoppable, PutProvider<PE> {
+/** base class for pursuit trajectory following motor and steering control */
+abstract class PursuitBase<PE> implements StartAndStoppable, PutProvider<PE> {
   private final SteerColumnInterface steerColumnInterface = SteerSocket.INSTANCE.getSteerColumnTracker();
   /** status default false */
   private boolean status = false;

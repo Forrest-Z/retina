@@ -15,14 +15,14 @@ import ch.ethz.idsc.tensor.red.Times;
 import ch.ethz.idsc.tensor.sca.Clip;
 import ch.ethz.idsc.tensor.sca.Clips;
 
-public abstract class PurePursuitModule extends AbstractClockedModule {
+public abstract class PursuitModule extends AbstractClockedModule {
   private final ManualControlProvider joystickLcmProvider = ManualConfig.GLOBAL.createProvider();
-  final PurePursuitRimo purePursuitRimo = new PurePursuitRimo();
-  final PurePursuitSteer purePursuitSteer = new PurePursuitSteer();
+  final PursuitRimo pursuitRimo = new PursuitRimo();
+  final PursuitSteer pursuitSteer = new PursuitSteer();
   protected final Clip angleClip = SteerConfig.GLOBAL.getAngleLimit();
   protected final PursuitConfig pursuitConfig;
 
-  PurePursuitModule(PursuitConfig pursuitConfig) {
+  PursuitModule(PursuitConfig pursuitConfig) {
     this.pursuitConfig = pursuitConfig;
   }
 
@@ -30,14 +30,14 @@ public abstract class PurePursuitModule extends AbstractClockedModule {
   protected final void first() {
     protected_first();
     joystickLcmProvider.start();
-    purePursuitRimo.start();
-    purePursuitSteer.start();
+    pursuitRimo.start();
+    pursuitSteer.start();
   }
 
   @Override // from AbstractModule
   protected final void last() {
-    purePursuitRimo.stop();
-    purePursuitSteer.stop();
+    pursuitRimo.stop();
+    pursuitSteer.stop();
     joystickLcmProvider.stop();
     protected_last();
   }
@@ -52,10 +52,10 @@ public abstract class PurePursuitModule extends AbstractClockedModule {
     final Optional<ManualControlInterface> optional = joystickLcmProvider.getManualControl();
     Optional<Scalar> heading = deriveHeading();
     if (heading.isPresent())
-      purePursuitSteer.setHeading(heading.get());
+      pursuitSteer.setHeading(heading.get());
     // ---
     final boolean status = optional.isPresent() && heading.isPresent();
-    purePursuitSteer.setOperational(status);
+    pursuitSteer.setOperational(status);
     if (status) {
       ManualControlInterface manualControlInterface = optional.get();
       // ante 20180604: the ahead average was used in combination with Ramp
@@ -64,9 +64,9 @@ public abstract class PurePursuitModule extends AbstractClockedModule {
       Scalar pair = Differences.of(manualControlInterface.getAheadPair_Unit()).Get(0); // in [0, 1]
       // post 20180619: allow reverse driving
       Scalar speed = Clips.absoluteOne().apply(ratio.add(pair));
-      purePursuitRimo.setSpeed(Times.of(pursuitConfig.rateFollower, speed, getSpeedMultiplier()));
+      pursuitRimo.setSpeed(Times.of(pursuitConfig.rateFollower, speed, getSpeedMultiplier()));
     }
-    purePursuitRimo.setOperational(status);
+    pursuitRimo.setOperational(status);
   }
 
   @Override // from AbstractClockedModule

@@ -11,7 +11,7 @@ import ch.ethz.idsc.tensor.Tensor;
 
 /** pure pursuit controller for SLAM algorithm */
 // XXX MG when only forward driving is supported, the speed should be Ramp'ed
-public final class SlamCurvePurePursuitModule extends PurePursuitModule {
+public final class SlamCurvePurePursuitModule extends PursuitModule {
   private Optional<Tensor> optionalCurve = Optional.empty();
 
   public SlamCurvePurePursuitModule() {
@@ -28,7 +28,7 @@ public final class SlamCurvePurePursuitModule extends PurePursuitModule {
     // ---
   }
 
-  @Override // form PurePursuitModule
+  @Override // form PursuitModule
   protected Optional<Scalar> deriveHeading() {
     Optional<Scalar> ratio = getRatio();
     if (ratio.isPresent()) { // is look ahead beacon available?

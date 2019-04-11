@@ -49,10 +49,10 @@ public class CurvePurePursuitModuleTest extends TestCase {
     GokartPoseEvent gokartPoseEvent = //
         GokartPoseEvents.offlineV1(Tensors.fromString("{0[m],0[m],0}"), RealScalar.ONE);
     purePursuitModule.getEvent(gokartPoseEvent);
-    assertFalse(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertFalse(purePursuitModule.purePursuitRimo.private_isOperational());
-    _checkFallback(purePursuitModule.purePursuitSteer.putEvent());
-    assertFalse(purePursuitModule.purePursuitRimo.putEvent().isPresent());
+    assertFalse(purePursuitModule.pursuitSteer.private_isOperational());
+    assertFalse(purePursuitModule.pursuitRimo.private_isOperational());
+    _checkFallback(purePursuitModule.pursuitSteer.putEvent());
+    assertFalse(purePursuitModule.pursuitRimo.putEvent().isPresent());
     purePursuitModule.last();
   }
 
@@ -78,15 +78,15 @@ public class CurvePurePursuitModuleTest extends TestCase {
     purePursuitModule.getEvent(gokartPoseEvent);
     AllGunsBlazing.publishAutonomous();
     purePursuitModule.runAlgo();
-    assertTrue(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertTrue(purePursuitModule.purePursuitRimo.private_isOperational());
-    Scalar heading = purePursuitModule.purePursuitSteer.getHeading();
+    assertTrue(purePursuitModule.pursuitSteer.private_isOperational());
+    assertTrue(purePursuitModule.pursuitRimo.private_isOperational());
+    Scalar heading = purePursuitModule.pursuitSteer.getHeading();
     // System.out.println(heading);
     // assertEquals(Quantity.of(-0.013455281968592674, "rad"), heading);
     Clip clip = Clips.interval(Quantity.of(-0.02, "rad"), Quantity.of(-0.01, "rad"));
     clip.requireInside(heading);
-    _checkFallback(purePursuitModule.purePursuitSteer.putEvent());
-    assertFalse(purePursuitModule.purePursuitRimo.putEvent().isPresent());
+    _checkFallback(purePursuitModule.pursuitSteer.putEvent());
+    assertFalse(purePursuitModule.pursuitRimo.putEvent().isPresent());
     purePursuitModule.last();
   }
 
@@ -97,12 +97,12 @@ public class CurvePurePursuitModuleTest extends TestCase {
         GokartPoseEvents.offlineV1(Tensors.fromString("{35.1[m], 44.9[m], 1+3.14}"), RealScalar.ONE);
     purePursuitModule.getEvent(gokartPoseEvent);
     purePursuitModule.runAlgo();
-    assertFalse(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertFalse(purePursuitModule.purePursuitRimo.private_isOperational());
-    Scalar heading = purePursuitModule.purePursuitSteer.getHeading();
+    assertFalse(purePursuitModule.pursuitSteer.private_isOperational());
+    assertFalse(purePursuitModule.pursuitRimo.private_isOperational());
+    Scalar heading = purePursuitModule.pursuitSteer.getHeading();
     assertTrue(Scalars.isZero(heading));
-    _checkFallback(purePursuitModule.purePursuitSteer.putEvent());
-    assertFalse(purePursuitModule.purePursuitRimo.putEvent().isPresent());
+    _checkFallback(purePursuitModule.pursuitSteer.putEvent());
+    assertFalse(purePursuitModule.pursuitRimo.putEvent().isPresent());
     purePursuitModule.last();
   }
 
@@ -113,12 +113,12 @@ public class CurvePurePursuitModuleTest extends TestCase {
         GokartPoseEvents.offlineV1(Tensors.fromString("{35.1[m], 44.9[m], 1+1.14}"), RealScalar.ONE);
     purePursuitModule.getEvent(gokartPoseEvent);
     purePursuitModule.runAlgo();
-    assertFalse(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertFalse(purePursuitModule.purePursuitRimo.private_isOperational());
-    Scalar heading = purePursuitModule.purePursuitSteer.getHeading();
+    assertFalse(purePursuitModule.pursuitSteer.private_isOperational());
+    assertFalse(purePursuitModule.pursuitRimo.private_isOperational());
+    Scalar heading = purePursuitModule.pursuitSteer.getHeading();
     assertTrue(Scalars.isZero(heading));
-    _checkFallback(purePursuitModule.purePursuitSteer.putEvent());
-    assertFalse(purePursuitModule.purePursuitRimo.putEvent().isPresent());
+    _checkFallback(purePursuitModule.pursuitSteer.putEvent());
+    assertFalse(purePursuitModule.pursuitRimo.putEvent().isPresent());
     purePursuitModule.last();
   }
 
@@ -131,14 +131,14 @@ public class CurvePurePursuitModuleTest extends TestCase {
     purePursuitModule.getEvent(gokartPoseEvent);
     AllGunsBlazing.publishAutonomous();
     purePursuitModule.runAlgo();
-    assertTrue(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertTrue(purePursuitModule.purePursuitRimo.private_isOperational());
-    Scalar heading = purePursuitModule.purePursuitSteer.getHeading();
+    assertTrue(purePursuitModule.pursuitSteer.private_isOperational());
+    assertTrue(purePursuitModule.pursuitRimo.private_isOperational());
+    Scalar heading = purePursuitModule.pursuitSteer.getHeading();
     // System.out.println(heading);
     Clip clip = Clips.interval(Quantity.of(-0.16, "rad"), Quantity.of(-0.12, "rad"));
     clip.requireInside(heading);
-    _checkFallback(purePursuitModule.purePursuitSteer.putEvent());
-    assertFalse(purePursuitModule.purePursuitRimo.putEvent().isPresent());
+    _checkFallback(purePursuitModule.pursuitSteer.putEvent());
+    assertFalse(purePursuitModule.pursuitRimo.putEvent().isPresent());
     purePursuitModule.last();
   }
 
@@ -151,14 +151,14 @@ public class CurvePurePursuitModuleTest extends TestCase {
     purePursuitModule.getEvent(gokartPoseEvent);
     AllGunsBlazing.publishAutonomous();
     purePursuitModule.runAlgo();
-    assertTrue(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertTrue(purePursuitModule.purePursuitRimo.private_isOperational());
-    Scalar heading = purePursuitModule.purePursuitSteer.getHeading();
+    assertTrue(purePursuitModule.pursuitSteer.private_isOperational());
+    assertTrue(purePursuitModule.pursuitRimo.private_isOperational());
+    Scalar heading = purePursuitModule.pursuitSteer.getHeading();
     // System.out.println(heading);
     Clip clip = Clips.interval(Quantity.of(-0.15, "rad"), Quantity.of(-0.10, "rad"));
     clip.requireInside(heading);
-    _checkFallback(purePursuitModule.purePursuitSteer.putEvent());
-    assertFalse(purePursuitModule.purePursuitRimo.putEvent().isPresent());
+    _checkFallback(purePursuitModule.pursuitSteer.putEvent());
+    assertFalse(purePursuitModule.pursuitRimo.putEvent().isPresent());
     purePursuitModule.last();
   }
 
@@ -170,8 +170,8 @@ public class CurvePurePursuitModuleTest extends TestCase {
     purePursuitModule.getEvent(gokartPoseEvent);
     AllGunsBlazing.publishAutonomous();
     purePursuitModule.runAlgo();
-    assertFalse(purePursuitModule.purePursuitSteer.private_isOperational());
-    assertFalse(purePursuitModule.purePursuitRimo.private_isOperational());
+    assertFalse(purePursuitModule.pursuitSteer.private_isOperational());
+    assertFalse(purePursuitModule.pursuitRimo.private_isOperational());
     purePursuitModule.last();
   }
 }

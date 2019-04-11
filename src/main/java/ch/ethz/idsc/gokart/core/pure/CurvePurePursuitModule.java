@@ -19,7 +19,7 @@ import ch.ethz.idsc.tensor.sca.Sign;
 
 /** class is the default choice for pure pursuit when driving along a curve in global
  * coordinates while the pose is updated periodically from a localization method. */
-public class CurvePurePursuitModule extends PurePursuitModule implements GokartPoseListener {
+public class CurvePurePursuitModule extends PursuitModule implements GokartPoseListener {
   private final Chop speedChop = RimoConfig.GLOBAL.speedChop();
   private final GokartPoseLcmClient gokartPoseLcmClient = new GokartPoseLcmClient();
   /** forward motion is determined by odometry:
@@ -54,7 +54,7 @@ public class CurvePurePursuitModule extends PurePursuitModule implements GokartP
     gokartPoseLcmClient.stopSubscriptions();
   }
 
-  @Override // from PurePursuitModule
+  @Override // from PursuitModule
   protected final Optional<Scalar> deriveHeading() {
     GokartPoseEvent gokartPoseEvent = this.gokartPoseEvent; // copy reference instead of synchronize
     // System.err.println("check isOperational");
