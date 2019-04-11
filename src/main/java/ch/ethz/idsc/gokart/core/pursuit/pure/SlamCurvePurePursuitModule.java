@@ -52,7 +52,7 @@ public final class SlamCurvePurePursuitModule extends PursuitModule {
       }
       return Optional.empty();
     }
-    System.err.println("no curve in pursuit pursuit");
+    System.err.println("no curve in pure pursuit");
     return Optional.empty();
   }
 

@@ -14,7 +14,7 @@ public class SlamPrcContainer {
   private SlamWaypoints slamWaypoints;
   /** fitted curve through valid way points in go kart frame */
   private Tensor fittedCurve;
-  /** inter- and extrapolated curve to be passed to pursuit pursuit controller.
+  /** inter- and extrapolated curve to be passed to pure pursuit controller.
    * The curve is stored in world frame so that as the gokart moves
    * the local coordinates of the curve are tracked accordingly. */
   private Optional<Tensor> worldCurve;

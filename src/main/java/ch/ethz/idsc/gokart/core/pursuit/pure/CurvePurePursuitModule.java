@@ -23,7 +23,7 @@ public class CurvePurePursuitModule extends CurvePursuitModule {
           closed, //
           isForward, //
           pursuitConfig.lookAheadMeter());
-    System.err.println("no curve in pursuit pursuit");
+    System.err.println("no curve in pure pursuit");
     return Optional.empty();
   }
 }

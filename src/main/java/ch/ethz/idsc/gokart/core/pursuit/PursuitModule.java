@@ -81,6 +81,6 @@ public abstract class PursuitModule extends AbstractClockedModule {
   }
 
   /** @return heading with unit "rad"
-   * Optional.empty() if autonomous pursuit pursuit control is not warranted */
+   * Optional.empty() if autonomous pursuit control is not warranted */
   protected abstract Optional<Scalar> deriveHeading();
 }
