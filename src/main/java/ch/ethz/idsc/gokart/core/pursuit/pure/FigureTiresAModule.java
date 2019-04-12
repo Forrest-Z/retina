@@ -1,7 +1,12 @@
 // code by jph
-package ch.ethz.idsc.gokart.core.pursuit;
+package ch.ethz.idsc.gokart.core.pursuit.pure;
 
-public class FigureEightModule extends FigureBaseModule {
+import ch.ethz.idsc.gokart.core.pursuit.DubendorfCurve;
+import ch.ethz.idsc.gokart.core.pursuit.FigureBaseModule;
+import ch.ethz.idsc.gokart.core.pursuit.PursuitConfig;
+import ch.ethz.idsc.gokart.core.pursuit.pure.CurvePurePursuitModule;
+
+public class FigureTiresAModule extends FigureBaseModule {
   /** until 20180226 the curve for trajectory pursuit was
    * DubendorfCurve.OVAL
    * 
@@ -12,7 +17,7 @@ public class FigureEightModule extends FigureBaseModule {
    * then the hyperloop project was introduced to the hanger which further reduced
    * the operating domain for the gokart. the trajectory is now
    * DubendorfCurve.EIGHT_HYPERLOOP */
-  public FigureEightModule() {
-    super(DubendorfCurve.HYPERLOOP_EIGHT);
+  public FigureTiresAModule() {
+    super(new CurvePurePursuitModule(PursuitConfig.GLOBAL), DubendorfCurve.TIRES_TRACK_A);
   }
 }

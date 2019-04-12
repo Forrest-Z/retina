@@ -1,5 +1,10 @@
 // code by jph
-package ch.ethz.idsc.gokart.core.pursuit;
+package ch.ethz.idsc.gokart.core.pursuit.pure;
+
+import ch.ethz.idsc.gokart.core.pursuit.DubendorfCurve;
+import ch.ethz.idsc.gokart.core.pursuit.FigureBaseModule;
+import ch.ethz.idsc.gokart.core.pursuit.PursuitConfig;
+import ch.ethz.idsc.gokart.core.pursuit.pure.CurvePurePursuitModule;
 
 public class FigureTiresBModule extends FigureBaseModule {
   /** until 20180226 the curve for trajectory pursuit was
@@ -13,6 +18,6 @@ public class FigureTiresBModule extends FigureBaseModule {
    * the operating domain for the gokart. the trajectory is now
    * DubendorfCurve.EIGHT_HYPERLOOP */
   public FigureTiresBModule() {
-    super(DubendorfCurve.TIRES_TRACK_B);
+    super(new CurvePurePursuitModule(PursuitConfig.GLOBAL), DubendorfCurve.TIRES_TRACK_B);
   }
 }

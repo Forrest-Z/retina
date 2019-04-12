@@ -1,11 +1,12 @@
 // code by jph
-package ch.ethz.idsc.gokart.core.pursuit;
+package ch.ethz.idsc.gokart.core.pursuit.pure;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 import ch.ethz.idsc.gokart.core.pos.GokartPoseEvents;
+import ch.ethz.idsc.gokart.core.pursuit.TrajectoryConfig;
 import ch.ethz.idsc.gokart.dev.AllGunsBlazing;
 import ch.ethz.idsc.gokart.dev.rimo.RimoGetEvent;
 import ch.ethz.idsc.gokart.dev.rimo.RimoGetEvents;

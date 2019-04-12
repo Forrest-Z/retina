@@ -1,5 +1,5 @@
 // code by ynager and jph
-package ch.ethz.idsc.gokart.core.pursuit;
+package ch.ethz.idsc.gokart.core.pursuit.pure;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -20,6 +20,9 @@ import ch.ethz.idsc.gokart.core.pos.GokartPoseHelper;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseLcmClient;
 import ch.ethz.idsc.gokart.core.pos.GokartPoseListener;
 import ch.ethz.idsc.gokart.core.pos.LocalizationConfig;
+import ch.ethz.idsc.gokart.core.pursuit.CurvePursuitModule;
+import ch.ethz.idsc.gokart.core.pursuit.PursuitConfig;
+import ch.ethz.idsc.gokart.core.pursuit.TrajectoryConfig;
 import ch.ethz.idsc.gokart.core.pursuit.pure.CurvePurePursuitModule;
 import ch.ethz.idsc.gokart.core.slam.PredefinedMap;
 import ch.ethz.idsc.gokart.gui.GokartLcmChannel;

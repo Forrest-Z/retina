@@ -25,7 +25,7 @@ public abstract class CurvePursuitModule extends PursuitModule implements Gokart
   /** forward motion is determined by odometry:
    * noise in the measurements around zero are also mapped to "forward" */
   protected boolean isForward = true;
-  protected final RimoGetListener rimoGetListener = new RimoGetListener() {
+  public final RimoGetListener rimoGetListener = new RimoGetListener() {
     @Override
     public void getEvent(RimoGetEvent rimoGetEvent) {
       Scalar speed = ChassisGeometry.GLOBAL.odometryTangentSpeed(rimoGetEvent);
@@ -98,12 +98,12 @@ public abstract class CurvePursuitModule extends PursuitModule implements Gokart
 
   /***************************************************/
   /** @return curve world frame coordinates */
-  protected final Optional<Tensor> getCurve() {
+  public final Optional<Tensor> getCurve() {
     return optionalCurve;
   }
 
   /** @return true if gokart is stationary or moving forwards */
-  protected final boolean isForward() {
+  public final boolean isForward() {
     return isForward;
   }
 }

@@ -17,17 +17,17 @@ import ch.ethz.idsc.tensor.sca.Clips;
 
 public abstract class PursuitModule extends AbstractClockedModule {
   private final ManualControlProvider joystickLcmProvider = ManualConfig.GLOBAL.createProvider();
-  protected final PursuitRimo pursuitRimo = new PursuitRimo();
-  protected final PursuitSteer pursuitSteer = new PursuitSteer();
   protected final Clip angleClip = SteerConfig.GLOBAL.getAngleLimit();
   protected final PursuitConfig pursuitConfig;
+  public final PursuitRimo pursuitRimo = new PursuitRimo();
+  public final PursuitSteer pursuitSteer = new PursuitSteer();
 
   public PursuitModule(PursuitConfig pursuitConfig) {
     this.pursuitConfig = pursuitConfig;
   }
 
   @Override // from AbstractModule
-  protected final void first() {
+  public final void first() {
     protected_first();
     joystickLcmProvider.start();
     pursuitRimo.start();
@@ -35,7 +35,7 @@ public abstract class PursuitModule extends AbstractClockedModule {
   }
 
   @Override // from AbstractModule
-  protected final void last() {
+  public final void last() {
     pursuitRimo.stop();
     pursuitSteer.stop();
     joystickLcmProvider.stop();
@@ -48,7 +48,7 @@ public abstract class PursuitModule extends AbstractClockedModule {
 
   /***************************************************/
   @Override // from AbstractClockedModule
-  protected final void runAlgo() {
+  public final void runAlgo() {
     final Optional<ManualControlInterface> optional = joystickLcmProvider.getManualControl();
     Optional<Scalar> heading = deriveHeading();
     if (heading.isPresent())
@@ -70,7 +70,7 @@ public abstract class PursuitModule extends AbstractClockedModule {
   }
 
   @Override // from AbstractClockedModule
-  protected final Scalar getPeriod() {
+  public final Scalar getPeriod() {
     return pursuitConfig.updatePeriod;
   }
 

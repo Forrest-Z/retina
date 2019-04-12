@@ -10,12 +10,13 @@ import ch.ethz.idsc.retina.util.sys.AbstractModule;
 import ch.ethz.idsc.retina.util.sys.ModuleAuto;
 import ch.ethz.idsc.tensor.Tensor;
 
-abstract class FigureBaseModule extends AbstractModule {
-  private final CurvePursuitModule curvePursuitModule = new CurvePurePursuitModule(PursuitConfig.GLOBAL);
+public abstract class FigureBaseModule extends AbstractModule {
+  private final CurvePursuitModule curvePursuitModule;
   private final GlobalViewLcmModule globalViewLcmModule = ModuleAuto.INSTANCE.getInstance(GlobalViewLcmModule.class);
 
-  protected FigureBaseModule(Tensor curve) {
-    curvePursuitModule.setCurve(Optional.of(curve));
+  protected FigureBaseModule(CurvePursuitModule curvePursuitModule, Tensor curve) {
+    this.curvePursuitModule = curvePursuitModule;
+    this.curvePursuitModule.setCurve(Optional.of(curve));
     if (Objects.nonNull(globalViewLcmModule))
       globalViewLcmModule.setCurve(curve);
   }

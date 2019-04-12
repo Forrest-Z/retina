@@ -3,6 +3,7 @@ package ch.ethz.idsc.gokart.core.pursuit;
 
 import java.util.Optional;
 
+import ch.ethz.idsc.gokart.core.pursuit.pure.CurvePurePursuitModuleTest;
 import ch.ethz.idsc.gokart.dev.steer.SteerColumnAdapter;
 import ch.ethz.idsc.gokart.dev.steer.SteerPutEvent;
 import ch.ethz.idsc.owl.ani.api.ProviderRank;

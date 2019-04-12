@@ -14,12 +14,12 @@ import ch.ethz.idsc.gokart.dev.steer.SteerConfig;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.qty.Quantity;
 
-class PursuitRimo extends PursuitBase<RimoPutEvent> {
+public final class PursuitRimo extends PursuitBase<RimoPutEvent> {
   private final SteerMapping steerMapping = SteerConfig.GLOBAL.getSteerMapping();
   /** available implementations of RimoRateControllerWrap are
    * {@link RimoRateControllerUno}, and {@link RimoRateControllerDuo}
    * UNO uses a single PI-controller */
-  /* package */ final RimoRateControllerWrap rimoRateControllerWrap = new RimoRateControllerUno();
+  public final RimoRateControllerWrap rimoRateControllerWrap = new RimoRateControllerUno();
 
   @Override // from StartAndStoppable
   public void start() {
