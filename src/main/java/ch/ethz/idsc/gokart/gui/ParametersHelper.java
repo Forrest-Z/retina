@@ -17,10 +17,8 @@ import ch.ethz.idsc.gokart.core.mpc.MPCActiveCompensationLearningConfig;
 import ch.ethz.idsc.gokart.core.mpc.MPCOptimizationConfig;
 import ch.ethz.idsc.gokart.core.perc.ClusterConfig;
 import ch.ethz.idsc.gokart.core.pure.ClothoidPursuitConfig;
-import ch.ethz.idsc.gokart.core.pure.GeodesicPursuitParams;
 import ch.ethz.idsc.gokart.core.pure.PlanSRConfig;
 import ch.ethz.idsc.gokart.core.pure.PurePursuitConfig;
-import ch.ethz.idsc.gokart.core.pure.PursuitConfig;
 import ch.ethz.idsc.gokart.core.pure.TrajectoryConfig;
 import ch.ethz.idsc.gokart.core.slam.LocalizationConfig;
 import ch.ethz.idsc.gokart.core.tvec.TorqueVectoringConfig;
@@ -57,6 +55,5 @@ import ch.ethz.idsc.gokart.gui.top.SensorsConfig;
       DavisSlamCoreConfig.GLOBAL, //
       PIDTuningParams.GLOBAL, //
       MPCActiveCompensationLearningConfig.GLOBAL, //
-      BrakeFunctionConfig.GLOBAL, //
-      GeodesicPursuitParams.GLOBAL);
+      BrakeFunctionConfig.GLOBAL);
 }

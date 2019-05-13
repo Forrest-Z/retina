@@ -46,9 +46,9 @@ public enum CurveClothoidPursuitHelper {
       mirrorAndReverse(tensor);
     /* Predicate<Scalar> isCompliant = isCompliant(ratioLimits, pose, speed);
      * TensorScalarFunction mapping = vector -> dragonNightKingKnife(vector, isCompliant, speed);
-     * Scalar var = ArgMinVariable.using(trajectoryEntryFinder, mapping, GeodesicPursuitParams.GLOBAL.getOptimizationSteps()).apply(tensor);
+     * Scalar var = ArgMinVariable.using(trajectoryEntryFinder, mapping, ClothoidPursuitConfig.GLOBAL.getOptimizationSteps()).apply(tensor);
      * Optional<Tensor> lookAhead = trajectoryEntryFinder.on(tensor).apply(var).point; */
-    Optional<Tensor> lookAhead = new PseudoSe2CurveIntersection(GeodesicPursuitParams.GLOBAL.minDistance).string(tensor);
+    Optional<Tensor> lookAhead = new PseudoSe2CurveIntersection(ClothoidPursuitConfig.GLOBAL.minDistance).string(tensor);
     return lookAhead.map(vector -> ClothoidPlan.from(vector, pose, isForward).orElse(null));
   }
 
@@ -57,7 +57,7 @@ public enum CurveClothoidPursuitHelper {
    * @param speed
    * @return quantity with unit [m] */
   public static Scalar dragonNightKingKnife(Tensor vector, Predicate<Scalar> isCompliant, Scalar speed) {
-    if (Scalars.lessThan(GeodesicPursuitParams.GLOBAL.minDistance, Norm._2.ofVector(Extract2D.FUNCTION.apply(vector)))) {
+    if (Scalars.lessThan(ClothoidPursuitConfig.GLOBAL.minDistance, Norm._2.ofVector(Extract2D.FUNCTION.apply(vector)))) {
       GeodesicPursuitInterface geodesicPursuit = new ClothoidPursuit(vector);
       Tensor ratios = geodesicPursuit.ratios();
       if (ratios.stream().map(Tensor::Get).allMatch(isCompliant)) {
@@ -65,7 +65,7 @@ public enum CurveClothoidPursuitHelper {
         // System.out.println("length=" + length);
         Scalar max = Abs.of(geodesicPursuit.ratios().stream().reduce(Max::of).get()).Get(); // [m^-1]
         // System.out.println("max=" + max);
-        Scalar virtual = Times.of(GeodesicPursuitParams.GLOBAL.scale, speed, max);
+        Scalar virtual = Times.of(ClothoidPursuitConfig.GLOBAL.scale, speed, max);
         // System.out.println("virtual=" + virtual);
         return length.add(virtual);
       }
