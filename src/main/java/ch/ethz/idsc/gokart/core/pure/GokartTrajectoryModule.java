@@ -96,7 +96,7 @@ public class GokartTrajectoryModule extends AbstractClockedModule {
   private final FlowsInterface flowsInterface;
   private final GokartPoseLcmClient gokartPoseLcmClient = new GokartPoseLcmClient();
   private final ManualControlProvider manualControlProvider = ManualConfig.GLOBAL.createProvider();
-  final CurvePursuitModule curvePursuitModule = new CurvePurePursuitModule(PursuitConfig.GLOBAL);
+  final CurvePursuitModule curvePursuitModule = new CurvePurePursuitModule(PurePursuitConfig.GLOBAL);
   /** sight lines mapping was successfully used for trajectory planning in a demo on 20190507 */
   private final AbstractMapping mapping;
   // = SightLinesMapping.defaultObstacle();

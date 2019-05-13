@@ -20,7 +20,7 @@ public class PurePursuitSteerTest extends TestCase {
     PurePursuitSteer pps = new PurePursuitSteer();
     Optional<SteerPutEvent> optional;
     optional = pps.private_putEvent(new SteerColumnAdapter(false, Quantity.of(0.3, "SCE")));
-    CurvePurePursuitModuleTest._checkFallback(optional);
+    CurvePursuitModuleTest._checkFallback(optional);
     optional = pps.control(new SteerColumnAdapter(true, Quantity.of(0.3, "SCE")));
     assertTrue(optional.isPresent());
     pps.setRatio(Quantity.of(-0.2, SI.PER_METER));
@@ -32,9 +32,9 @@ public class PurePursuitSteerTest extends TestCase {
   public void testNotCalibrated2() {
     PurePursuitSteer pps = new PurePursuitSteer();
     pps.setOperational(true);
-    CurvePurePursuitModuleTest._checkFallback(pps.putEvent());
+    CurvePursuitModuleTest._checkFallback(pps.putEvent());
     Optional<SteerPutEvent> optional;
     optional = pps.private_putEvent(new SteerColumnAdapter(false, Quantity.of(0.3, "SCE")));
-    CurvePurePursuitModuleTest._checkFallback(optional);
+    CurvePursuitModuleTest._checkFallback(optional);
   }
 }

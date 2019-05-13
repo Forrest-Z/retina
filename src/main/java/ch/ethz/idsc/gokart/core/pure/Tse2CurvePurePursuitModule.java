@@ -21,7 +21,7 @@ public final class Tse2CurvePurePursuitModule extends CurvePurePursuitModule {
   private final Object lock = new Object();
   private List<TrajectorySample> trajectory;
 
-  public Tse2CurvePurePursuitModule(PursuitConfig pursuitConfig) {
+  public Tse2CurvePurePursuitModule(PurePursuitConfig pursuitConfig) {
     super(pursuitConfig);
   }
 
@@ -36,10 +36,10 @@ public final class Tse2CurvePurePursuitModule extends CurvePurePursuitModule {
     }
   }
 
-  @Override // from PurePursuitModule
+  @Override // from PursuitModule
   protected Scalar getSpeedMultiplier() {
     // gokartPoseEvent is non-null at this point, implied by
-    // PurePursuitModule.runAlgo, and CurvePurePursuitModule.deriveHeading
+    // PursuitModule.runAlgo, and CurvePurePursuitModule.deriveHeading
     Tensor pose = gokartPoseEvent.getPose(); // latest pose
     TensorUnaryOperator toLocal = new Se2Bijection(PoseHelper.toUnitless(pose)).inverse();
     synchronized (lock) {
