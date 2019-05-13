@@ -15,7 +15,6 @@ import ch.ethz.idsc.tensor.ref.FieldSubdivide;
 public class PurePursuitConfig extends PursuitConfig {
   public static final PurePursuitConfig GLOBAL = AppResources.load(new PurePursuitConfig());
   /***************************************************/
-  private static final Scalar updatePeriod = Quantity.of(0.1, SI.SECOND); // 0.1[s] == 10[Hz]
   /** look ahead distance for pure pursuit controller
    * 20171218: changed from 2.8[m] to 3.5[m] otherwise tracked angle is out of range too frequently
    * 20180304: changed from 3.5[m] to 3.9[m] to match with value used many times before
@@ -25,6 +24,6 @@ public class PurePursuitConfig extends PursuitConfig {
   public Scalar lookAhead = Quantity.of(3.5, SI.METER);
 
   public PurePursuitConfig() {
-    super(updatePeriod);
+    super(Quantity.of(0.1, SI.SECOND));
   }
 }

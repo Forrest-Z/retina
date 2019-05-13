@@ -38,6 +38,7 @@ public class CurvePursuitModuleTest extends TestCase {
   }
 
   public void testSome() {
+    PursuitConfig config = PurePursuitConfig.GLOBAL;
     CurvePursuitModule purePursuitModule = new CurvePurePursuitModule(PurePursuitConfig.GLOBAL);
     Scalar period = purePursuitModule.getPeriod();
     Clip clip = Clips.interval(Quantity.of(0.01, "s"), Quantity.of(0.2, "s"));

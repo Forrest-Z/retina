@@ -25,7 +25,6 @@ import ch.ethz.idsc.tensor.ref.FieldSubdivide;
 public class ClothoidPursuitConfig extends PursuitConfig{
   public static final ClothoidPursuitConfig GLOBAL = AppResources.load(new ClothoidPursuitConfig());
   /***************************************************/
-  private static final Scalar updatePeriod = Quantity.of(0.1, SI.SECOND); // 0.1[s] == 10[Hz]
   @FieldSubdivide(start = "0[m]", end = "10[m]", intervals = 20)
   public Scalar minDistance = Quantity.of(3, SI.METER);
   @FieldSubdivide(start = "0", end = "100", intervals = 100)
@@ -33,10 +32,9 @@ public class ClothoidPursuitConfig extends PursuitConfig{
   public Scalar scale = Quantity.of(20, "m*s");
 
   public ClothoidPursuitConfig() {
-    super(updatePeriod);
+    super(Quantity.of(0.1, SI.SECOND));
   }
 
-  // ---
   public final TrajectoryEntryFinder trajectoryEntryFinder = new InterpolationEntryFinder(0);
 
   public static final List<DynamicRatioLimit> ratioLimits() {
