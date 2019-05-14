@@ -27,12 +27,14 @@ public class ClothoidPursuitConfig extends PursuitConfig{
   /***************************************************/
   @FieldSubdivide(start = "0[m]", end = "10[m]", intervals = 20)
   public Scalar minDistance = Quantity.of(3, SI.METER);
+  @FieldSubdivide(start = "0[m]", end = "1[m]", intervals = 10)
+  public Scalar deviationLimit = Quantity.of(0.1, SI.METER);
   @FieldSubdivide(start = "0", end = "100", intervals = 100)
   public Scalar optimizationSteps = RealScalar.of(25);
   public Scalar scale = Quantity.of(20, "m*s");
 
   public ClothoidPursuitConfig() {
-    super(Quantity.of(0.1, SI.SECOND));
+    super(Quantity.of(0.01, SI.SECOND));
   }
 
   public final TrajectoryEntryFinder trajectoryEntryFinder = new InterpolationEntryFinder(0);
