@@ -14,12 +14,9 @@ import ch.ethz.idsc.owl.math.planar.TrajectoryEntryFinder;
 import ch.ethz.idsc.retina.util.math.SI;
 import ch.ethz.idsc.sophus.group.Se2GroupElement;
 import ch.ethz.idsc.tensor.DoubleScalar;
-import ch.ethz.idsc.tensor.RealScalar;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.Scalars;
 import ch.ethz.idsc.tensor.Tensor;
-import ch.ethz.idsc.tensor.alg.Dimensions;
-import ch.ethz.idsc.tensor.opt.LinearInterpolation;
 import ch.ethz.idsc.tensor.opt.TensorUnaryOperator;
 import ch.ethz.idsc.tensor.qty.Quantity;
 import ch.ethz.idsc.tensor.red.ArgMin;
@@ -48,8 +45,6 @@ public enum CurveClothoidPursuitHelper {
       Tensor pose, Scalar speed, Tensor curve, boolean isForward, //
       TrajectoryEntryFinder trajectoryEntryFinder, //
       List<DynamicRatioLimit> ratioLimits) {
-    if (!plan.isPresent())
-      replanning(pose, speed, curve, isForward, trajectoryEntryFinder, ratioLimits);
     if (plan.isPresent()) {
       if (Scalars.lessEquals(ClothoidPursuitConfig.GLOBAL.minDistance, distanceDriven(pose))) // TODO maybe introduce some margin
         replanning(pose, speed, curve, isForward, trajectoryEntryFinder, ratioLimits);
@@ -58,7 +53,11 @@ public enum CurveClothoidPursuitHelper {
         if (Scalars.lessEquals(ClothoidPursuitConfig.GLOBAL.deviationLimit, deviation))
           replanning(pose, speed, curve, isForward, trajectoryEntryFinder, ratioLimits);
       }
-      plan.ifPresent(p -> p.setRatio(LinearInterpolation.of(plan.get().ratios()).At(distanceDriven(pose).divide(plan.get().length()))));
+    } else
+      replanning(pose, speed, curve, isForward, trajectoryEntryFinder, ratioLimits);
+    if (plan.isPresent()) {
+      Scalar progress = distanceDriven(pose).divide(plan.get().length());
+      plan.get().ratio(progress);
     }
     return plan;
   }

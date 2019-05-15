@@ -7,8 +7,10 @@ import java.util.Optional;
 import ch.ethz.idsc.owl.math.MinMax;
 import ch.ethz.idsc.owl.math.planar.ClothoidPursuit;
 import ch.ethz.idsc.sophus.group.Se2GroupElement;
+import ch.ethz.idsc.tensor.RealScalar;
 import ch.ethz.idsc.tensor.Scalar;
 import ch.ethz.idsc.tensor.Tensor;
+import ch.ethz.idsc.tensor.opt.LinearInterpolation;
 import ch.ethz.idsc.tensor.sca.Clips;
 
 public class ClothoidPlan {
@@ -30,7 +32,6 @@ public class ClothoidPlan {
   // ---
   private final Tensor ratios;
   private final Tensor curve;
-  private Scalar ratio;
   private Scalar length;
 
   /** @param ratios [m^-1] start and end, used to derive future heading in good precision
@@ -45,7 +46,13 @@ public class ClothoidPlan {
   }
 
   public Scalar ratio() {
-    return ratio;
+    return ratio(RealScalar.ZERO);
+  }
+
+  /** @param progress [0, 1]
+   * @return ratio [m^-1] */
+  public Scalar ratio(Scalar progress) {
+    return LinearInterpolation.of(ratios).At(Clips.interval(0, 1).requireInside(progress));
   }
 
   public Tensor curve() {
@@ -56,10 +63,5 @@ public class ClothoidPlan {
     if (Objects.isNull(length))
       length = CurveClothoidPursuitHelper.curveLength(curve);
     return length;
-  }
-
-  public void setRatio(Scalar ratio) {
-    MinMax minMax = MinMax.of(ratios);
-    this.ratio = Clips.interval(minMax.min().Get(), minMax.max().Get()).requireInside(ratio);
   }
 }
