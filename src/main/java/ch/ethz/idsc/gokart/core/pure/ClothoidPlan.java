@@ -42,7 +42,7 @@ public class ClothoidPlan {
   }
 
   public Tensor ratios() {
-    return ratios;
+    return ratios.unmodifiable();
   }
 
   public Scalar ratio() {
