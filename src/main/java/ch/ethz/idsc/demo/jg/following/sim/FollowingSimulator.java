@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +42,6 @@ import ch.ethz.idsc.tensor.sca.Round;
 public class FollowingSimulator extends TrajectoryDesignModule {
   private static final ColorDataIndexed COLORS = ColorDataLists._001.cyclic();
   // ---
-  private final SpinnerLabel<Scalar> spinnerLabelRate = new SpinnerLabel<>();
   private final SpinnerLabel<Scalar> spinnerLabelDuration = new SpinnerLabel<>();
   private final SpinnerLabel<Scalar> spinnerLabelSpeed = new SpinnerLabel<>();
   // ---
@@ -120,12 +118,6 @@ public class FollowingSimulator extends TrajectoryDesignModule {
     {
       trajectoryDesign.timerFrame.jToolBar.addSeparator();
       {
-        Integer[] rates = { 1, 5, 10, 20, 30, 40, 50 };
-        spinnerLabelRate.setStream(Arrays.stream(rates).map(i -> Quantity.of(i, SI.PER_SECOND)));
-        spinnerLabelRate.setValue(Quantity.of(10, SI.PER_SECOND));
-        spinnerLabelRate.addToComponentReduced(trajectoryDesign.timerFrame.jToolBar, new Dimension(50, 28), "rate");
-      }
-      {
         spinnerLabelDuration.setStream(IntStream.range(1, 11).map(i -> i * 10).mapToObj(i -> Quantity.of(i, SI.SECOND)));
         spinnerLabelDuration.setValue(Quantity.of(60, SI.SECOND));
         spinnerLabelDuration.addToComponentReduced(trajectoryDesign.timerFrame.jToolBar, new Dimension(50, 28), "duration");
@@ -148,8 +140,7 @@ public class FollowingSimulator extends TrajectoryDesignModule {
           for (FollowingSimulations simulation : FollowingSimulations.values()) {
             simulation.run(curve, initialPose, //
                 spinnerLabelSpeed.getValue(), //
-                spinnerLabelDuration.getValue(), //
-                spinnerLabelRate.getValue().reciprocal());
+                spinnerLabelDuration.getValue());
             map.put(simulation.name(), simulation);
             export(simulation.trail().get(), simulation.name().toLowerCase());
             System.out.println(simulation.getReport());

@@ -29,7 +29,7 @@ public class ClothoidPursuitConfig extends PursuitConfig{
   public Scalar minDistance = Quantity.of(3, SI.METER);
   @FieldSubdivide(start = "0[m]", end = "1[m]", intervals = 10)
   public Scalar deviationLimit = Quantity.of(0.1, SI.METER);
-  @FieldSubdivide(start = "1", end = "100", intervals = 99)
+  @FieldSubdivide(start = "0", end = "100", intervals = 100)
   public Scalar optimizationSteps = RealScalar.of(25);
   public Scalar scale = Quantity.of(20, "m*s");
 

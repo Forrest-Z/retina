@@ -10,6 +10,7 @@ import ch.ethz.idsc.gokart.core.pure.ClothoidPursuitConfig;
 import ch.ethz.idsc.gokart.core.pure.CurveClothoidPursuitPlanner;
 import ch.ethz.idsc.gokart.core.pure.CurvePurePursuitHelper;
 import ch.ethz.idsc.gokart.core.pure.PurePursuitConfig;
+import ch.ethz.idsc.gokart.core.pure.PursuitConfig;
 import ch.ethz.idsc.owl.bot.se2.Se2CarIntegrator;
 import ch.ethz.idsc.owl.bot.se2.glc.CarHelper;
 import ch.ethz.idsc.owl.math.MinMax;
@@ -28,6 +29,11 @@ public enum FollowingSimulations implements ErrorInterface {
     public Optional<Scalar> setup(Tensor pose, Scalar speed, Tensor curve) {
       return CurvePurePursuitHelper.getRatio(pose, curve, Sign.isPositiveOrZero(speed), PurePursuitConfig.GLOBAL.lookAhead);
     }
+
+    @Override
+    public PursuitConfig getConfig() {
+      return PurePursuitConfig.GLOBAL;
+    }
   },
   CLOTHOID {
     private final CurveClothoidPursuitPlanner planner = new CurveClothoidPursuitPlanner();
@@ -39,6 +45,11 @@ public enum FollowingSimulations implements ErrorInterface {
           ClothoidPursuitConfig.GLOBAL.trajectoryEntryFinder, //
           ClothoidPursuitConfig.ratioLimits()).map(ClothoidPlan::ratio);
     }
+
+    @Override
+    public PursuitConfig getConfig() {
+      return ClothoidPursuitConfig.GLOBAL;
+    }
   };
   private Tensor trail;
   private Tensor ratios;
@@ -47,12 +58,12 @@ public enum FollowingSimulations implements ErrorInterface {
   /** @param curve reference
    * @param initialPose of vehicle {x[m], y[m], angle}
    * @param speed of vehicle [m*s^-1]
-   * @param duration of simulation [s]
-   * @param timeStep of simulation [s] */
-  public void run(Tensor curve, Tensor initialPose, Scalar speed, Scalar duration, Scalar timeStep) {
+   * @param duration of simulation [s] */
+  public void run(Tensor curve, Tensor initialPose, Scalar speed, Scalar duration) {
     trail = Tensors.empty();
     ratios = Tensors.empty();
     followingError = new FollowingError();
+    Scalar timeStep = getConfig().updatePeriod;
     // ---
     followingError.setReference(curve);
     Tensor pose = initialPose;
@@ -107,4 +118,6 @@ public enum FollowingSimulations implements ErrorInterface {
    * @param curve reference
    * @return ratio [m^-1] */
   public abstract Optional<Scalar> setup(Tensor pose, Scalar speed, Tensor curve);
+
+  public abstract PursuitConfig getConfig();
 }

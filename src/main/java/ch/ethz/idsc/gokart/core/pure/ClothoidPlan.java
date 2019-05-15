@@ -13,7 +13,7 @@ import ch.ethz.idsc.tensor.opt.LinearInterpolation;
 import ch.ethz.idsc.tensor.sca.Clips;
 
 public class ClothoidPlan {
-  private static final int REFINEMENT = 2;
+  private static final int REFINEMENT = 6;
 
   /** @param lookAhead {x[m], y[m], angle}
    * @param pose of vehicle {x[m], y[m], angle}
