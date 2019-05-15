@@ -4,7 +4,6 @@ package ch.ethz.idsc.gokart.core.pure;
 import java.util.Objects;
 import java.util.Optional;
 
-import ch.ethz.idsc.owl.math.MinMax;
 import ch.ethz.idsc.owl.math.planar.ClothoidPursuit;
 import ch.ethz.idsc.sophus.group.Se2GroupElement;
 import ch.ethz.idsc.tensor.RealScalar;

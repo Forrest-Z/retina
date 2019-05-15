@@ -7,7 +7,7 @@ import ch.ethz.idsc.demo.jg.following.analysis.ErrorInterface;
 import ch.ethz.idsc.demo.jg.following.analysis.FollowingError;
 import ch.ethz.idsc.gokart.core.pure.ClothoidPlan;
 import ch.ethz.idsc.gokart.core.pure.ClothoidPursuitConfig;
-import ch.ethz.idsc.gokart.core.pure.CurveClothoidPursuitHelper;
+import ch.ethz.idsc.gokart.core.pure.CurveClothoidPursuitPlanner;
 import ch.ethz.idsc.gokart.core.pure.CurvePurePursuitHelper;
 import ch.ethz.idsc.gokart.core.pure.PurePursuitConfig;
 import ch.ethz.idsc.owl.bot.se2.Se2CarIntegrator;
@@ -30,9 +30,11 @@ public enum FollowingSimulations implements ErrorInterface {
     }
   },
   CLOTHOID {
+    private final CurveClothoidPursuitPlanner planner = new CurveClothoidPursuitPlanner();
+
     @Override
     public Optional<Scalar> setup(Tensor pose, Scalar speed, Tensor curve) {
-      return CurveClothoidPursuitHelper.getPlan(pose, speed, curve, //
+      return planner.getPlan(pose, speed, curve, //
           Sign.isPositiveOrZero(speed), //
           ClothoidPursuitConfig.GLOBAL.trajectoryEntryFinder, //
           ClothoidPursuitConfig.ratioLimits()).map(ClothoidPlan::ratio);
